@@ -1,0 +1,36 @@
+{
+  "name": "easypan-front",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@highlightjs/vue-plugin": "^2.1.0",
+    "@moefe/vue-aplayer": "^2.0.0-beta.5",
+    "aplayer": "^1.10.1",
+    "axios": "^1.6.8",
+    "docx-preview": "^0.3.0",
+    "dplayer": "^1.27.1",
+    "element-plus": "^2.7.1",
+    "highlight.js": "^11.9.0",
+    "js-md5": "^0.8.3",
+    "sass": "^1.75.0",
+    "sass-loader": "^14.2.1",
+    "spark-md5": "^3.0.2",
+    "vue": "^3.4.21",
+    "vue-clipboard3": "^2.0.0",
+    "vue-cookies": "^1.8.4",
+    "vue-pdf-embed": "^2.0.3",
+    "vue-router": "^4.3.2",
+    "vue3-pdfjs": "^0.1.6",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "vite": "^5.2.8"
+  }
+}
