@@ -8,6 +8,7 @@ import java.util.*;
 /**
  * 文件信息 数据库操作接口
  */
+@Mapper
 public interface FileInfoMapper<T, P> extends BaseMapper<T, P> {
 
     /**

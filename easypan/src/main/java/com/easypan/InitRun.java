@@ -16,7 +16,7 @@ public class InitRun implements ApplicationRunner {
 
     @Resource
     private DataSource dataSource;
-    InitRun
+//    InitRun
     @Resource
     private RedisComponent redisComponent;
 

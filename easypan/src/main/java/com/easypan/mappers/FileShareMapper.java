@@ -2,9 +2,12 @@ package com.easypan.mappers;
 
 import org.apache.ibatis.annotations.*;
 
+import org.apache.ibatis.annotations.Mapper;
+
 /**
  * 分享信息 数据库操作接口
  */
+@Mapper
 public interface FileShareMapper<T, P> extends BaseMapper<T, P> {
 
     /**

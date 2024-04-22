@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.*;
 
 import java.util.*;
 
+@Mapper
  interface BaseMapper<T, P> {
 	/**
 	 * insert:(插入). <br/>

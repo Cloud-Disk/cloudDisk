@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.*;
 /**
  * 邮箱验证码 数据库操作接口
  */
+@Mapper
 public interface EmailCodeMapper<T, P> extends BaseMapper<T, P> {
 
     /**

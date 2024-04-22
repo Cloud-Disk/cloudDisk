@@ -1,10 +1,12 @@
 package com.easypan.mappers;
 
 import org.apache.ibatis.annotations.*;
+import org.mybatis.spring.annotation.*;
 
 /**
  * 用户信息 数据库操作接口
  */
+@Mapper
 public interface UserInfoMapper<T, P> extends BaseMapper<T, P> {
 
     /**
