@@ -3,7 +3,7 @@
     <div class="header">
       <div class="logo">
         <span class="iconfont icon-pan"></span>
-        <span class="name">Easy云盘</span>
+        <span class="name">KunXin云盘</span>
       </div>
       <div class="right-panel">
         <el-popover

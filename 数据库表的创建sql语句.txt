@@ -1,0 +1,68 @@
+数据库名称：easypan
+
+CREATE TABLE `user_info` (
+  `user_id` varchar(15) NOT NULL COMMENT 'user id',
+  `nick_name` varchar(20) DEFAULT NULL COMMENT 'user nick name',
+  `email` varchar(255) DEFAULT NULL COMMENT 'email',
+  `qq_open_id` varchar(35) DEFAULT NULL COMMENT 'QQ id',
+  `qq_avatar` varchar(150) DEFAULT NULL COMMENT 'qq头像',
+  `password` varchar(32) DEFAULT NULL COMMENT 'MD5 password',
+  `join_time` datetime DEFAULT NULL COMMENT 'rigister time',
+  `last_login_time` datetime DEFAULT NULL COMMENT 'last login time, date',
+  `status` tinyint(1) DEFAULT NULL COMMENT '0: forbidden; 1: Enable',
+  `use_space` bigint(20) NOT NULL COMMENT 'User Space, unit: byte',
+  `total_space` bigint(20) DEFAULT NULL COMMENT 'Total Space, unit: byte',
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `key_email` (`email`) USING BTREE,
+  UNIQUE KEY `key_qq_open_id` (`qq_open_id`) USING BTREE,
+  UNIQUE KEY `key_nick_name` (`nick_name`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='user information';
+
+
+CREATE TABLE `file_share` (
+  `share_id` varchar(20) NOT NULL,
+  `file_id` varchar(10) DEFAULT NULL,
+  `user_id` varchar(10) DEFAULT NULL,
+  `valid_type` tinyint(1) DEFAULT NULL COMMENT '0: 1day 1: 7day 2: 30 day 3: forever',
+  `expire_time` datetime DEFAULT NULL,
+  `share_time` datetime DEFAULT NULL,
+  `code` varchar(5) DEFAULT NULL,
+  `show_count` int(11) DEFAULT NULL COMMENT 'browse times',
+  PRIMARY KEY (`share_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='share information';
+
+
+CREATE TABLE `file_info` (
+  `file_id` varchar(10) NOT NULL,
+  `user_id` varchar(10) NOT NULL,
+  `file_md5` varchar(32) DEFAULT NULL,
+  `file_pid` varchar(10) DEFAULT NULL COMMENT 'file''s folder id',
+  `file_size` bigint(20) DEFAULT NULL COMMENT 'unit: byte',
+  `file_name` varchar(200) DEFAULT NULL,
+  `file_cover` varchar(100) DEFAULT NULL COMMENT 'cover of file(picture. video)',
+  `file_path` varchar(100) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL COMMENT 'file create time',
+  `last_update_time` datetime DEFAULT NULL,
+  `folder_type` tinyint(1) DEFAULT NULL COMMENT '0: folder, 1: file',
+  `file_category` tinyint(1) DEFAULT NULL COMMENT '1: video 2:music 3:picture 4:txt 5:other',
+  `file_type` tinyint(255) DEFAULT NULL COMMENT '1: video 2:music 3:picture 4:pdf 5:doc 6:excel 7:txt 8:code 9:zip 10:other',
+  `status` tinyint(1) DEFAULT NULL COMMENT '0: encoding 1:encoding failed 1: encoding successfully',
+  `recovery_time` datetime DEFAULT NULL COMMENT 'enter recycle bin time',
+  `del_flag` tinyint(1) DEFAULT NULL COMMENT '0:delete 1:recycle bin 2:normal',
+  PRIMARY KEY (`file_id`,`user_id`),
+  KEY `idx_create_time` (`create_time`) USING BTREE,
+  KEY `idx_user_id` (`user_id`) USING BTREE,
+  KEY `idx_md5` (`file_md5`) USING BTREE,
+  KEY `idx_file_pid` (`file_pid`) USING BTREE,
+  KEY `idx_del_flag` (`del_flag`) USING BTREE,
+  KEY `idx_recover_time` (`recovery_time`) USING BTREE,
+  KEY `idx_status` (`status`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='file information table';
+
+CREATE TABLE `email_code` (
+  `email` varchar(150) NOT NULL COMMENT 'email',
+  `code` varchar(5) NOT NULL COMMENT 'identifyCode',
+  `create_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT 'code create time',
+  `status` tinyint(1) DEFAULT NULL COMMENT '0: doesn''t use 1: have already been used',
+  PRIMARY KEY (`email`,`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='email identify code';
